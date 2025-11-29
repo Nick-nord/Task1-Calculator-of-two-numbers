@@ -8,23 +8,45 @@ class Calculator
 public:
 	double num1;
 	double num2;
-	void classSum()
+	double add(double num1, double num2) // - метод должен возвращать результат сложения num1 и num2
 	{
-		std::cout << "num1 + num2 = " << num1 + num2 << std::endl;
+		return num1 + num2;
 	};
-	void classDifferenceSum() 
-	{ 
-		std::cout << "num1 - num2 = " << num1 - num2 << std::endl;
-		std::cout << "num2 - num1 = " << num2 - num1 << std::endl;
-	};
-	void classMultiplication() 
-	{ 
-		std::cout << "num1 * num2 = " << num1 * num2 << std::endl;
-	};
-	void classDivision() 
+	double multiply(double num1, double num2) // - метод должен возвращать результат перемножения num1 и num2
 	{
-		std::cout << "num1 / num2 = " << num1 / num2 << std::endl;
-		std::cout << "num2 / num1 = " << num2 / num1 << std::endl;
+		return num1 * num2;
+	}; 
+	double subtract_1_2(double num1, double num2) // - метод должен возвращать результат вычитания num2 из num1
+	{
+		return num1 - num2;
+	};
+	double subtract_2_1(double num1, double num2) // - метод должен возвращать результат вычитания num1 из num2
+	{
+		return num2 - num1;
+	};
+	double divide_1_2(double num1, double num2)// - метод должен возвращать результат деления num1 на num2
+	{
+		return num1 / num2;
+	};
+	double divide_2_1(double num1, double num2)// - метод должен возвращать результат деления num2 на num1
+	{
+		return num2 / num1;
+	};
+    bool set_num1(double num1)// - метод должен установить значение поля num1 равное значению аргумента num1 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false
+    {
+		if (!num1)
+		{
+			std::cout << "You can't divide by zero.";
+			return 1;
+		}
+    }; 
+	bool set_num2(double num2)// - метод должен установить значение поля num2 равное значению аргумента num2 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false
+	{
+		if (!num1)
+		{
+			std::cout << "You can't divide by zero.";
+			return 1;
+		}
 	};
 
 };
@@ -35,10 +57,14 @@ int main(int argc, char** argv)
 	std::cin >> test.num1;
 	std::cout << "Enter num2 :" << std::endl;
 	std::cin >> test.num2;
-	test.classSum();
-	test.classDifferenceSum();
-	test.classMultiplication();
-	test.classDivision();
+	test.set_num1(test.num2);
+
+	std::cout<< "num1 + num2 = " << test.add(test.num1, test.num2) << std::endl;
+	std::cout << "num1 * num2 = " << test.multiply(test.num1, test.num2) << std::endl;
+	std::cout << "num1 - num2 = " << test.subtract_1_2(test.num1, test.num2) << std::endl;
+	std::cout << "num2 - num1 = " << test.subtract_2_1(test.num1, test.num2) << std::endl;
+	std::cout << "num1 / num2 = " << test.divide_1_2(test.num1, test.num2) << std::endl;
+	std::cout << "num2 / num1 = " << test.divide_2_1(test.num1, test.num2) << std::endl;
 
 	return EXIT_SUCCESS;
 }
